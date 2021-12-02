@@ -1,0 +1,37 @@
+From 700ea95f31e1151064a70db5913fd349ddc1ff67 Mon Sep 17 00:00:00 2001
+From: root <root@heming-g5.cs.hku.hk>
+Date: Thu, 2 Dec 2021 03:10:09 +0000
+Subject: [PATCH] compatible
+
+---
+ fairseq/data/data_utils.py      | 1 +
+ fairseq/data/indexed_dataset.py | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/fairseq/data/data_utils.py b/fairseq/data/data_utils.py
+index 7914e605..187ef335 100644
+--- a/fairseq/data/data_utils.py
++++ b/fairseq/data/data_utils.py
+@@ -45,6 +45,7 @@ def collate_tokens(
+     pad_to_bsz=None,
+ ):
+     """Convert a list of 1d tensors into a padded 2d tensor."""
++    pad_to_multiple=1
+     size = max(v.size(0) for v in values)
+     size = size if pad_to_length is None else max(size, pad_to_length)
+     if pad_to_multiple != 1 and size % pad_to_multiple != 0:
+diff --git a/fairseq/data/indexed_dataset.py b/fairseq/data/indexed_dataset.py
+index d0843926..d783bb8a 100644
+--- a/fairseq/data/indexed_dataset.py
++++ b/fairseq/data/indexed_dataset.py
+@@ -75,6 +75,7 @@ def make_builder(out_file, impl, vocab_size=None):
+ 
+ 
+ def make_dataset(path, impl, fix_lua_indexing=False, dictionary=None):
++    impl = "lazy"
+     if impl == "raw" and IndexedRawTextDataset.exists(path):
+         assert dictionary is not None
+         return IndexedRawTextDataset(path, dictionary)
+-- 
+2.17.1
+
