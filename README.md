@@ -5,7 +5,13 @@
 
 Artifact Ver 0.1 - Kick Off Version 
 
+## Dataset and AE hosts
 
+You can download the dataset via this link: https://drive.google.com/file/d/1QztbVol4kaQjIL3lpuGvLkBRTB_6Fd1-/view?usp=sharing
+
+You can unzip it to naspipe-ae/[experiment name]/translation/data.
+
+If reviewers need a bare metal host to evaluate our artifact, please leave a message in the hotcrp.
 
 ## Installation 
 
