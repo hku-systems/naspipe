@@ -71,8 +71,6 @@ Stage: [3] Epoch: [0][5/49372]  Time: 2.070 (1.613) Id: 4   Tokens: 3520    Outp
 
 ## Functional Experiment
 
-(to be released soon within the kick-off period)
-
 ### Experiment 1:
 
 #### Run sequential execution (no parallel, equivalant to single GPU training):
