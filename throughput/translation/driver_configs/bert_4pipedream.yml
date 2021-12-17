@@ -1,0 +1,17 @@
+'log_directory': 'output'
+'module': 'gpus=4'
+'data_dir': 'data/wmt14_en_de_joined_dict'
+'config_file': 'gpus=4/mp_conf.json'
+'container': 'transformer'
+'machines': ['localhost:0', 'localhost:1', 'localhost:2', 'localhost:3']
+'batch_size': 1280
+'learning_rate': 0.0006
+'weight_decay': 0.000
+'epochs': 20
+'print_frequency': 100
+'verbose_frequency': 0
+'compress_activations': False
+'compress_in_gpu': False
+'learning_rate_policy': 'polynomial'
+'model_type': 'transformer'
+'distributed_backend': 'gloo'

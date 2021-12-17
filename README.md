@@ -6,7 +6,6 @@
 Artifact Ver 0.1 - Kick Off Version 
 
 
-
 ## Installation 
 
 Pull and run PyTorch official image:
@@ -66,11 +65,62 @@ Stage: [3] Epoch: [0][5/49372]  Time: 2.070 (1.613) Id: 4   Tokens: 3520    Outp
 
 (to be released soon within the kick-off period)
 
-Experiment 1:
+### Experiment 1:
 
 ./run_compare.sh
 
 
-Experiment 2:
+### Experiment 2:
 
-./run_throughput.sh
+In Experiment 2, we provide the original environment where we conducted our performance evaluation.
+
+Pull the transformer image with apex installed:
+
+```bash
+docker pull zsxhku/transformer:apex
+```
+
+Start docker under the AE directory:
+```bash
+cd naspipe-ae/
+nvidia-docker run -it -v $PWD:/workspace --net=host --ipc=host zsxhku/transformer:apex
+cd /workspace/throughput/translation
+```
+
+Run throughput with different search configurations by modifying the last input argument (e.g., modifiy --input_path [space_config] to --input_path config_4_4.json): 
+
+```bash
+python -m launch --nnodes 1 --node_rank 0 --nproc_per_node 4 main_with_runtime.py --data_dir data/wmt14_en_de_joined_dict --master_addr localhost --module gpus=4 --checkpoint_dir output --distributed_backend gloo -b 3840 --lr 0.000060 --lr_policy polynomial --weight-decay 0.000000 --epochs 10 --print-freq 10 --verbose 0 --num_ranks_in_server 4 --config_path gpus=4/mp_conf.json --input_path [space_config]
+```
+
+#### space_config c0 file: config_4_4.json
+
+Expected output at the 200 step, estimated time to execute 1K subnets is (0.129):
+
+```bash
+Stage: [3] Epoch: [0][200/1000] Time(1639706538.722864): 0.329 (0.404)  Epoch time [hr]: 0.026 (0.129)
+```
+
+#### space_config c1 file: config_4_3.json
+
+Expected output at the 200 step, estimated time to execute 1K subnets is (0.144):
+
+```bash
+Stage: [3] Epoch: [0][200/1000] Time(1639706693.9953368): 0.349 (0.423) Epoch time [hr]: 0.029 (0.144)
+```
+
+#### space_config c2 file: config_4_2.json
+
+Expected output at the 200 step, estimated time to execute 1K subnets is (0.153):
+
+```bash
+Stage: [3] Epoch: [0][200/1000] Time(1639706892.0565453): 0.323 (0.442) Epoch time [hr]: 0.031 (0.153)
+```
+
+#### space_config 4 file: config_4.json
+
+Expected output at the 200 step, estimated time to execute 1K subnets is (0.214):
+
+```bash
+Stage: [3] Epoch: [0][200/1000] Time(1639707112.2461872): 1.513 (0.672) Epoch time [hr]: 0.043 (0.214)
+```
