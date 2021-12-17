@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/433303490.svg)](https://zenodo.org/badge/latestdoi/433303490)
 
 
-Artifact Ver 0.1 - Kick Off Version 
+Artifact Ver 0.2 - Functional Version 
 
 ## Dataset and AE hosts
 
