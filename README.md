@@ -15,7 +15,16 @@ The final data direction should looks like: naspipe/[experiment name]/translatio
 
 If reviewers need a bare metal host to evaluate our artifact, please leave a message in the hotcrp.
 
+## Quick Hints
+
+If you want to exit an experiment quickly, please start another shell and use:
+
+```
+sudo pkill -9 python
+```
+
 ## Installation 
+
 
 Pull and run PyTorch official image:
 ```bash
@@ -50,6 +59,8 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
 ## Kick-off Functional
 
+Please make sure the data is copied to naspipe/[experiment name]/translation/data/wmt14_en_de_joined_dict/...
+
 ```bash
 cd /workspace/reproducible/translation
 ```
@@ -70,6 +81,8 @@ Stage: [3] Epoch: [0][5/49372]  Time: 2.070 (1.613) Id: 4   Tokens: 3520    Outp
 ```
 
 ## Functional Experiment
+
+Please make sure the data is copied to naspipe/[experiment name]/translation/data/wmt14_en_de_joined_dict/...
 
 ### Experiment 1:
 
