@@ -199,6 +199,14 @@ Stage: [3] Epoch: [0][200/1000] Time(1639707112.2461872): 1.513 (0.672) Epoch ti
 
 ### Experiment 2 Auto-generate Figure 5
 
+We have provided the sample raw output (sample) and sample figure (sample_figure.pdf).
+
+You can directly generate the figure based on our sample raw
+output; or your can regenerate the raw output yourself.
+
+The experiments can be run on 4GPUs, and you can observe a same trend with the Figure 5 of our paper.
+
+#### Start Docker
 [NOTE!] Please make sure the data is copied to naspipe/baselines/translation/data/wmt14_en_de_joined_dict/...
 
 ```bash
