@@ -196,3 +196,50 @@ Expected output at the 200 step, estimated time to execute 1K subnets is (0.214)
 ```bash
 Stage: [3] Epoch: [0][200/1000] Time(1639707112.2461872): 1.513 (0.672) Epoch time [hr]: 0.043 (0.214)
 ```
+
+### Experiment 2 Auto-generate Figure 5
+
+```bash
+cd naspipe/
+nvidia-docker run -it -v $PWD:/workspace --net=host --ipc=host zsxhku/transformer:apex
+cd /workspace/
+```
+
+#### Run experiments
+Run Figure 5 script and save the log to a file:
+
+```bash
+./figure5.sh | tee output
+```
+
+If you encounter any errors, clean the processes by running the naspipe/clean.sh on host (not inside the docker); then re-run the script. You can manually select experiments (by deleting unwanted experiments from the script).
+
+#### Generate Figures
+
+Make sure the matplotlib is installed:
+
+```bash
+python -m pip install matplotlib
+```
+
+Generate Figure5:
+
+```bash
+python gen_figure.py output figure5
+```
+
+Then you will get figure5.pdf.
+
+#### Get Figure PDF from the server via Email
+```bash
+sudo apt-get install mailutils
+```
+For the options, choose Internet Site.
+
+Use scp to copy the generated figures;
+
+Or you can use the below command to send the generated PDFs to your email (remember to set your email address).
+
+```bash
+echo "Figure 5" | mail -s "Experiment Figure 5" your_email -A figure5.pdf
+```
