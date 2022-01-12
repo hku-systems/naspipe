@@ -199,6 +199,8 @@ Stage: [3] Epoch: [0][200/1000] Time(1639707112.2461872): 1.513 (0.672) Epoch ti
 
 ### Experiment 2 Auto-generate Figure 5
 
+[NOTE!] Please make sure the data is copied to naspipe/baselines/translation/data/wmt14_en_de_joined_dict/...
+
 ```bash
 cd naspipe/
 nvidia-docker run -it -v $PWD:/workspace --net=host --ipc=host zsxhku/transformer:apex
